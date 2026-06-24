@@ -1,0 +1,440 @@
+/* Custom font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --color-purple: #6B1FD4;
+    --color-purple-dark: #5A1BB8;
+    --color-cyan: #00D9FF;
+    --color-cyan-light: #00F0FF;
+    --color-blue: #0052CC;
+    --color-blue-light: #0066FF;
+    --color-white: #FFFFFF;
+    --color-dark: #0A0E27;
+    --color-dark-light: #1A1F3A;
+
+    /* Shared gradients (previously duplicated across card classes) */
+    --gradient-card-bg: linear-gradient(135deg, rgba(107, 31, 212, 0.1), rgba(0, 217, 255, 0.05));
+    --gradient-cta: linear-gradient(135deg, var(--color-cyan), var(--color-blue-light));
+    --gradient-accent: linear-gradient(90deg, var(--color-cyan), var(--color-blue));
+
+    /* Shared border (previously duplicated across card classes) */
+    --border-card: 1px solid rgba(0, 217, 255, 0.2);
+    --border-radius-card: 0.75rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--color-dark) 0%, #1a1030 100%);
+    color: #F3F4F6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.eyebrow {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--gradient-cta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+button, a {
+    transition: all 0.3s ease;
+}
+
+/* CTA Button styles */
+.btn-primary {
+    background: var(--gradient-cta);
+    color: var(--color-dark);
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    min-height: 48px;
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+}
+
+.btn-secondary {
+    background-color: rgba(107, 31, 212, 0.2);
+    color: var(--color-cyan);
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid var(--color-cyan);
+    min-height: 48px;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(0, 217, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: var(--color-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 25px rgba(0, 217, 255, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 217, 255, 0.6);
+}
+
+/* Section spacing */
+.section-padding {
+    padding: 3rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding: 4.5rem 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-padding {
+        padding: 6rem 4rem;
+    }
+}
+
+/* Accent divider */
+.accent-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-accent);
+    margin: 2rem 0;
+    border-radius: 2px;
+}
+
+/*
+ * Shared card base style
+ * Replaces duplicated gradient-bg + border across
+ * .service-card, .contact-card, .stat-box, .portfolio-card
+ */
+.card-base {
+    background: var(--gradient-card-bg);
+    border: var(--border-card);
+    border-radius: var(--border-radius-card);
+}
+
+/* Portfolio card hover effect */
+.portfolio-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-card);
+    aspect-ratio: 4/3;
+    border: 2px solid rgba(0, 217, 255, 0.2);
+    background: var(--gradient-card-bg);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 14, 39, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.portfolio-card:hover .portfolio-overlay,
+.portfolio-card:focus-within .portfolio-overlay {
+    opacity: 1;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-dark), #2a1a4a);
+    display: none;
+    flex-direction: column;
+    z-index: 998;
+    gap: 2rem;
+    padding: 6rem 2rem 2rem;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    color: var(--color-white);
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 0;
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Service card — extends .card-base */
+.service-card {
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    border-color: var(--color-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.15);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+/* Testimonial card */
+.testimonial-card {
+    background: linear-gradient(135deg, rgba(107, 31, 212, 0.15), rgba(0, 217, 255, 0.08));
+    padding: 2.5rem;
+    border-radius: var(--border-radius-card);
+    border: var(--border-card);
+    border-left: 4px solid var(--color-cyan);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-cyan), var(--color-blue-light), var(--color-purple));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Masonry grid for portfolio */
+@supports (display: grid) {
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+}
+
+/* SVG Icon styles */
+.icon-svg {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+svg {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+}
+
+/* Contact info cards — extends .card-base */
+.contact-card {
+    padding: 2rem;
+}
+
+.contact-card a {
+    color: var(--color-cyan);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: var(--color-cyan-light);
+}
+
+/* Stats counter — extends .card-base */
+.stat-box {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: var(--border-radius-card);
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(107, 31, 212, 0.1));
+    border: var(--border-card);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-cta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navigation active state */
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Social link button style (shared across social icons) */
+.social-link {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    color: var(--color-cyan);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link:hover {
+    border-color: var(--color-cyan);
+    background: rgba(0, 217, 255, 0.2);
+    color: var(--color-cyan-light);
+}
