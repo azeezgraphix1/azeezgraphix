@@ -4,6 +4,7 @@
   "private": true,
   "description": "AzeezgraphiX — Premium Printing Services & Graphic Design website",
   "scripts": {
+    "build": "echo 'No build step required'",
     "test": "jest --verbose",
     "test:coverage": "jest --coverage"
   },
